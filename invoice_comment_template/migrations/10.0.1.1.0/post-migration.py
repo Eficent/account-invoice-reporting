@@ -41,7 +41,7 @@ def populate_base_comment_template(cr):
     )
 
 
-def update_purchase_order(cr):
+def update_invoice(cr):
     cr.execute(
         """
         UPDATE account_invoice po
@@ -65,5 +65,4 @@ def update_purchase_order(cr):
 @openupgrade.migrate(use_env=False)
 def migrate(cr, version):
     populate_base_comment_template(cr)
-    update_invoice_order(cr)
-    tools.drop_view_if_exists(cr, 'account_condition_text')
+    update_invoice(cr)
